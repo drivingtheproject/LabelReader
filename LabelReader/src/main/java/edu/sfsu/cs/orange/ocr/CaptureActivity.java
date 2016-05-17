@@ -548,7 +548,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     //    inflater.inflate(R.menu.options_menu, menu);
     super.onCreateOptionsMenu(menu);
     menu.add(0, SETTINGS_ID, 0, "Settings").setIcon(android.R.drawable.ic_menu_preferences);
-    menu.add(0, ABOUT_ID, 0, "About").setIcon(android.R.drawable.ic_menu_info_details);
+    //menu.add(0, ABOUT_ID, 0, "About").setIcon(android.R.drawable.ic_menu_info_details);
     return true;
   }
 
@@ -686,11 +686,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     indeterminateDialog = new ProgressDialog(this);
     indeterminateDialog.setTitle("Please wait");
     String ocrEngineModeName = getOcrEngineModeName();
-    if (ocrEngineModeName.equals("Both")) {
-      indeterminateDialog.setMessage("Initializing Cube and Tesseract OCR engines for " + languageName + "...");
-    } else {
-      indeterminateDialog.setMessage("Initializing " + ocrEngineModeName + " OCR engine for " + languageName + "...");
-    }
+/*
+if (ocrEngineModeName.equals("Both")) {
+indeterminateDialog.setMessage("Initializing Cube and Tesseract OCR engines for " + languageName + "...");
+} else {
+indeterminateDialog.setMessage("Initializing " + ocrEngineModeName + " OCR engine for " + languageName + "...");
+}
+*/
+      indeterminateDialog.setMessage("Initializing application...");
     indeterminateDialog.setCancelable(false);
     indeterminateDialog.show();
     
@@ -955,7 +958,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   
   /** Displays a pop-up message showing the name of the current OCR source language. */
   void showLanguageName() {   
-    Toast toast = Toast.makeText(this, "OCR: " + sourceLanguageReadable, Toast.LENGTH_LONG);
+    Toast toast = Toast.makeText(this, "..Ready..", Toast.LENGTH_LONG);
     toast.setGravity(Gravity.TOP, 0, 0);
     toast.show();
   }
