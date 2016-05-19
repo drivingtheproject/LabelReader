@@ -19,14 +19,16 @@
 	<!-- GENERAL SETTINGS -->
 	<PreferenceCategory android:title="General settings">
 
-		<CheckBoxPreference android:key="preference_capture_continuous"
-			android:title="Continuous preview"
-			android:entries="@array/capturemodes" />
+		<CheckBoxPreference
+			android:entries="@array/capturemodes"
+			android:key="preference_capture_continuous"
+			android:title="Continuous preview" />
 
-		<ListPreference android:title="Recognize"
-			android:key="sourceLanguageCodeOcrPref"
+		<ListPreference
 			android:entries="@array/languagenames"
-			android:entryValues="@array/iso6393" />
+			android:entryValues="@array/iso6393"
+			android:key="sourceLanguageCodeOcrPref"
+			android:title="Recognize" />
 			
 	</PreferenceCategory>
 
@@ -36,35 +38,38 @@
 		<CheckBoxPreference android:key="preference_translation_toggle_translation"
 			android:title="Translate"/>
 
-		<ListPreference android:key="targetLanguageCodeTranslationPref"  
-			android:title="Translate to"
+		<ListPreference
 			android:dependency="preference_translation_toggle_translation"
-			android:entries="@array/translationtargetlanguagenames_google" 
-			android:entryValues="@array/translationtargetiso6391_google" />
-			
-		<ListPreference android:key="preference_translator" 
-			android:title="Translator"
-		    android:dependency="preference_translation_toggle_translation"
-			android:entries="@array/translators" 
-			android:entryValues="@array/translators" />
-						
+			android:entries="@array/translationtargetlanguagenames_google"
+			android:entryValues="@array/translationtargetiso6391_google"
+			android:key="targetLanguageCodeTranslationPref"
+			android:title="Translate to" />
+
+		<ListPreference
+			android:dependency="preference_translation_toggle_translation"
+			android:entries="@array/translators"
+			android:entryValues="@array/translators"
+			android:key="preference_translator"
+			android:title="Translator" />
+
 	</PreferenceCategory>
 
 	<!-- ADVANCED SETTINGS -->
 	<PreferenceCategory android:title="Advanced settings">
 
-	    <ListPreference android:key="preference_ocr_engine_mode"
-	        android:title="OCR engine"
-	        android:entries="@array/ocrenginemodes"
-	        android:entryValues="@array/ocrenginemodes"/>
+		<ListPreference
+			android:entries="@array/ocrenginemodes"
+			android:entryValues="@array/ocrenginemodes"
+			android:key="preference_ocr_engine_mode"
+			android:title="OCR engine" />
 	    
 	    <CheckBoxPreference
 	        android:key="preferences_auto_focus"
 	        android:title="Autofocus"/>
 	    
 	    <CheckBoxPreference
-	        android:key="preferences_disable_continuous_focus"
 	        android:defaultValue="true"
+			android:key="preferences_disable_continuous_focus"
 	        android:title="Standard focus mode" />
 	    
 	    <CheckBoxPreference
@@ -83,15 +88,16 @@
 		    android:title="Light"/>
 -->
 
-	    <ListPreference android:key="preference_page_segmentation_mode"
-			android:title="Page segmentation"
+		<ListPreference
 			android:entries="@array/pagesegmentationmodes"
-			android:entryValues="@array/pagesegmentationmodes" />
+			android:entryValues="@array/pagesegmentationmodes"
+			android:key="preference_page_segmentation_mode"
+			android:title="Page segmentation" />
 
 	    <CheckBoxPreference
             android:key="preferences_reverse_image"
-            android:title="Reversed camera image"
-            android:summary="(For devices with only a front camera)"/>
+			android:summary="(For devices with only a front camera)"
+			android:title="Reversed camera image" />
 	    
 	</PreferenceCategory>
 	

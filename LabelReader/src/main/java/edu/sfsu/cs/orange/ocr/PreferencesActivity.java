@@ -24,8 +24,6 @@ import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import edu.sfsu.cs.orange.ocr.language.LanguageCodeHelper;
-import edu.sfsu.cs.orange.ocr.language.TranslatorBing;
-import edu.sfsu.cs.orange.ocr.language.TranslatorGoogle;
 
 /**
  * Class to handle preferences that are saved across sessions of the app. Shows
@@ -61,16 +59,14 @@ public class PreferencesActivity extends PreferenceActivity implements
 
   public static final String TRANSLATOR_BING = "Bing Translator";
   public static final String TRANSLATOR_GOOGLE = "Google Translate";
-  
+  private static SharedPreferences sharedPreferences;
   private ListPreference listPreferenceSourceLanguage;
-  private ListPreference listPreferenceTargetLanguage;  
+  private ListPreference listPreferenceTargetLanguage;
   private ListPreference listPreferenceTranslator;
   private ListPreference listPreferenceOcrEngineMode;
   private EditTextPreference editTextPreferenceCharacterBlacklist;
   private EditTextPreference editTextPreferenceCharacterWhitelist;
   private ListPreference listPreferencePageSegmentationMode;
-  
-  private static SharedPreferences sharedPreferences;
   
   /**
    * Set the default preference values.
@@ -183,21 +179,7 @@ public class PreferencesActivity extends PreferenceActivity implements
     String[] translators = getResources().getStringArray(R.array.translators);
     String translator = sharedPreferences.getString(KEY_TRANSLATOR, CaptureActivity.DEFAULT_TRANSLATOR);
     String newLanguageCode = "";
-    if (translator.equals(translators[0])) { // Bing
-      // Update the list of available languages for the currently-chosen translation API.
-      listPreferenceTargetLanguage.setEntries(R.array.translationtargetlanguagenames_microsoft);
-      listPreferenceTargetLanguage.setEntryValues(R.array.translationtargetiso6391_microsoft);
-      
-      // Get the corresponding code for our language name
-      newLanguageCode = TranslatorBing.toLanguage(currentLanguage);
-    } else if (translator.equals(translators[1])) { // Google
-      // Update the list of available languages for the currently-chosen translation API.
-      listPreferenceTargetLanguage.setEntries(R.array.translationtargetlanguagenames_google);
-      listPreferenceTargetLanguage.setEntryValues(R.array.translationtargetiso6391_google);
-      
-      // Get the corresponding code for our language name      
-      newLanguageCode = TranslatorGoogle.toLanguage(currentLanguage);
-    }
+
 
     // Store the code as the target language preference
     String newLanguageName = LanguageCodeHelper.getTranslationLanguageName(getBaseContext(),
